@@ -2,7 +2,7 @@
 
 Anything that must never happen is enforced by a hook, not requested in an instruction. Instructions shape behavior on average; a `PreToolUse` hook that returns `deny` blocks every instance, and its reason string tells the model what to do instead.
 
-**Failure this prevents:** secrets entering the transcript. AI tools were able to read a production `.env` during routine debugging, and every key on that host had to be rotated. An instruction saying "do not read .env" was already in place.
+**Failure this prevents:** secrets entering the transcript. An AI coding tool with shell access can read a `.env` file during routine debugging (`cat`, recursive `grep`, `docker compose config`) even when an instruction says not to. Once a value is in the transcript it has to be treated as exposed, so a hook blocks the read before it runs.
 
 ## The `.env` hook
 
@@ -39,7 +39,7 @@ Registration in `~/.claude/settings.json`:
 
 Not every rule needs a hook. Guardrails that depend on judgment live in the skill for that domain, written as a hard rule with the incident that produced it:
 
-- "Never edit the assistant in the vendor web UI; the next deploy overwrites it. Edit the source file and deploy." (voice skill)
 - "Place a live test call only with explicit per-call confirmation; it rings a real phone." (voice skill)
+- "The emergency path is deterministic; do not regress it to model-spoken text." (voice skill)
 - "A verified SMS campaign is a binding contract. Any change to live message behavior that deviates from it is re-vetted before it ships." (compliance skill)
-- "Never route eval data through the production logging path." (eval skill)
+- "A rubric change is a new instrument; never pool scores across it." (eval skill)

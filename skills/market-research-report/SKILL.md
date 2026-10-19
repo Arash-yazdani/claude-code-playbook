@@ -8,14 +8,14 @@ description: >-
   "discovery study", "competitive analysis", or any deliverable that is a written market study.
 ---
 
-<!-- Sanitized for publication: client and engagement names, brand-kit paths, logo paths and
-     brand-specific copy removed. Reference files (design system, brand rules, judge rubric)
+<!-- Sanitized for publication: client and engagement names, brand-kit specifics, logo paths and
+     brand copy removed. Reference files (design system, brand rules, judge rubric)
      are not included. -->
 
 # Market research report pipeline
 
-A repeatable workflow for producing client-ready market research reports. Tested on a live
-consulting engagement in September 2026.
+A repeatable workflow for producing client-ready market research reports. Used at Modeo, Arash
+Yazdani's AI consulting studio, first on a client engagement in September 2026.
 
 ## When to use
 

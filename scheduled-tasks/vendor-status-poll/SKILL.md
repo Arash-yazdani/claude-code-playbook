@@ -3,18 +3,17 @@ name: vendor-status-poll
 description: Poll an SMS campaign's carrier vetting status twice daily and alert on change; temporary monitor
 ---
 
-<!-- Sanitized for publication: host alias, account and service identifiers, phone numbers
-     and dates replaced with placeholders. The pattern: the credential is read and used on the
-     server, and only the status crosses back to the agent. -->
+<!-- Sanitized for publication: host alias, account and service identifiers, phone numbers,
+     dates and the credential-loading step replaced with placeholders. The pattern: the
+     credential is used on the server, and only the status crosses back to the agent. -->
 
 Check the Twilio A2P 10DLC campaign vetting status and report it.
 
-Run this over SSH. The auth token must never leave the server, so read credentials there and call the API from there:
+Run this over SSH on the server that already holds the credentials. The auth token must never reach the agent's transcript; only the printed status comes back:
 
 ```
 ssh <PROD_HOST> 'bash -s' <<'REMOTE'
-SID=$(sed -n "s/^TWILIO_ACCOUNT_SID=//p" <APP_DIR>/<SECRETS_FILE> | tr -d "\r\"" | head -1)
-TOK=$(sed -n "s/^TWILIO_AUTH_TOKEN=//p" <APP_DIR>/<SECRETS_FILE> | tr -d "\r\"" | head -1)
+# Load SID and TOK from your secret manager here; never echo them.
 MG=<MESSAGING_SERVICE_SID>
 echo "=== Campaign status ==="
 curl -s "https://messaging.twilio.com/v1/Services/$MG/Compliance/Usa2p" -u "$SID:$TOK" \

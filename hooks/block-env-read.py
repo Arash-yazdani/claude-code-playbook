@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """PreToolUse hook (Bash): deny commands that would put .env secrets in the transcript.
 
-Added 2026-10-16 after AI tools could read a production .env and every key
-had to be rotated. It catches accidental reads by a cooperative model,
+AI tools with shell access can read secrets files, so this hook blocks the read
+before it runs. It catches accidental reads by a cooperative model,
 not deliberate workarounds (obfuscated paths, scripts that print one setting).
 
 Self-test: python3 block-env-read.py --test

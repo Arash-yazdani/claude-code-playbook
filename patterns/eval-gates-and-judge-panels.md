@@ -50,7 +50,7 @@ Check these before running the panel so it spends attention on new problems:
 - Do not use the target industry's term of art for an adjacent thing. A pilot is not a deployment; review is not certification.
 - State the boundary of the work in the first paragraph.
 - State the small number instead of hiding it.
-- Give sample size and interval for any rate. 84% at n=53 has a 95% interval of roughly 72% to 91%.
+- Give sample size and interval for any rate. 80% at n=50 has a 95% Wilson interval of roughly 67% to 89%.
 - Name why a method was chosen ("Gwet's AC1 rather than Cohen's kappa, which degenerates at these marginals").
 - Two documents describing the same work must use the same claim in the same words.
 
@@ -58,8 +58,9 @@ Check these before running the panel so it spends attention on new problems:
 
 For model behavior (see [`skills/familycheck-evals`](../skills/familycheck-evals/SKILL.md)):
 
-- Report a median across repeated runs; one run at temperature 0.85 varied 84% to 86% on identical code.
+- A saturated suite is not a correct agent. When a suite you wrote reaches 100%, make it harder.
+- Report a median across repeated runs; identical code at non-zero temperature scores differently run to run.
 - Version the instrument. A rubric change is a new instrument; never pool scores across it.
-- Report Gwet's AC1 alongside Cohen's kappa and print the 2x2 cells. At 95% agreement and a 95% pass rate kappa can go negative.
+- Report Gwet's AC1 alongside Cohen's kappa and print the 2x2 cells. At high agreement and a high pass rate kappa can go negative.
 - Never sample a validation set from a queue that only contains failures.
 - Label before judging when measuring human-judge agreement; the ordering is the blinding.

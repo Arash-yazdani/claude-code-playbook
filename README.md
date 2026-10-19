@@ -24,7 +24,9 @@ Every example here was used on real work (a voice-AI product, consulting deliver
 | [`hooks/`](hooks/) | A `PreToolUse` hook that blocks `.env` reads, with a built-in self-test | Security guardrails for agentic coding |
 | [`scheduled-tasks/`](scheduled-tasks/) | Three unattended agent prompts: inbox drafts, nightly knowledge-base consolidation, vendor status polling | Agent operations; AI enablement |
 
-## Adopting this in a team in one week
+## Proposed adoption plan
+
+A five-day plan for a team adopting these patterns. It has not been run as written; each step reuses a component that has.
 
 | Day | Work | Output |
 |---|---|---|
